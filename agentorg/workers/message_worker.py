@@ -18,6 +18,7 @@ logger = logging.getLogger(__name__)
 @register_worker
 class MessageWorker(BaseWorker):
 
+    # description = "The worker that used to deliver the message to the user, either a question for further clarification about tags or topics or provide some information."
     description = "The worker that used to deliver the message to the user, either a question or provide some information."
 
     def __init__(self):

@@ -1,0 +1,54 @@
+[
+    {
+        "task_name": "Provide detailed information about product specifications and capabilities",
+        "steps": [
+            "Provide detailed information about product specifications and capabilities"
+        ]
+    },
+    {
+        "task_name": "Assist with information on purchasing and rental options for robots",
+        "steps": [
+            "Greet the user and ask for their specific inquiry regarding purchasing or renting robots.",
+            "Use the RAGWorker to retrieve detailed information from the company's internal documentation about purchasing and rental options for robots.",
+            "Present the retrieved information to the user, including details about pricing, terms, and conditions for both purchasing and rental options.",
+            "Ask the user if they have any specific questions or need further clarification about the provided information.",
+            "Based on the user's follow-up questions, use the RAGWorker again if necessary to provide additional information or clarification.",
+            "Confirm if the user is satisfied with the information provided or if they need assistance with the next steps, such as proceeding with a purchase or rental transaction.",
+            "Guide the user through the process of completing a transaction, if applicable, or provide contact information for further assistance if needed."
+        ]
+    },
+    {
+        "task_name": "Provide information on delivery timelines for different products",
+        "steps": [
+            "Provide information on delivery timelines for different products"
+        ]
+    },
+    {
+        "task_name": "Offer technical support and troubleshooting guidance",
+        "steps": [
+            "Ask the user to describe the technical issue they are experiencing in detail.",
+            "Use RAGWorker to search the company's internal documentation for relevant troubleshooting steps or solutions based on the user's description.",
+            "Provide clear and concise troubleshooting steps or solutions to the user.",
+            "Ask the user if the provided solution resolved their issue or if they need further assistance.",
+            "If the issue persists, ask follow-up questions for more details and offer additional troubleshooting steps or escalate the issue if necessary.",
+            "Confirm with the user whether their issue has been resolved or if further support is required."
+        ]
+    },
+    {
+        "task_name": "Provide information on business partnerships and custom solutions",
+        "steps": [
+            "Greet the user and inquire about the specific information or assistance they need regarding business partnerships and custom solutions.",
+            "Utilize the RAGWorker to search the company's internal documentation for relevant information about business partnerships and custom solutions.",
+            "Present the retrieved information to the user, ensuring clarity and relevance to their query.",
+            "Ask if the user needs further clarification or additional information on the topic.",
+            "Provide additional information or clarify any points as requested by the user, ensuring their query is fully resolved.",
+            "Confirm if the user has all the information they need or if there are any other questions they would like to ask."
+        ]
+    },
+    {
+        "task_name": "Clarify company policies and available services",
+        "steps": [
+            "Clarify company policies and available services"
+        ]
+    }
+]

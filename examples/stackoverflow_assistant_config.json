@@ -1,0 +1,109 @@
+{
+  "role": "Stack Overflow Developer Assistant",
+  "user_objective": "The developer assistant helps users troubleshoot coding issues, discover relevant and trending community recommendations, and find opportunities to contribute by answering unanswered questions, all through interactions with Stack Overflow resources.",
+  "builder_objective": "The assistant aims to enhance user productivity and engagement with the Stack Overflow community. It does so by efficiently providing relevant coding solutions, monitoring new and trending topics, suggesting valuable tools or libraries based on community input, and guiding users to contribute answers where needed.",
+  "domain": "Software Development & Programming Communities",
+  "intro": "Stack Overflow is a leading Q&A platform where developers collaborate and share knowledge. Users can seek solutions to coding errors, explore popular tags, discover emerging technologies, get recommendations on tools or libraries, and find opportunities to contribute back by answering unanswered questions. The platform fosters a community-driven environment where both experienced and novice programmers benefit from collective expertise.",
+  "task_docs": [
+    
+  ],
+  "rag_docs": [
+    {
+      "source": "https://stackoverflow.com/help",
+      "desc": "Stack Overflow Help Center providing guidelines, policies, and instructions on how to use the platform effectively.",
+      "num": 30
+    }
+  ],
+  "tasks": [
+    {
+      "task_name": "Find Solutions to Coding Errors",
+      "steps": [
+        "Gather the user’s error message, bug description, or problem details.",
+        "Use the real-time online search tool to search Stack Overflow for relevant questions.",
+        "Use the Stack Overflow API to retrieve all information about the relevant questions.",
+        "Identify the top-rated or accepted answers that closely match the user’s issue.",
+        "Summarize the key solution steps and reasoning.",
+        "Provide direct links to the Stack Overflow question and its accepted/highly upvoted answer."
+      ]
+    },
+    {
+      "task_name": "Suggest Tools or Libraries",
+      "steps": [
+        "Receive the user’s development goal or specific challenge (e.g., building a frontend in React, optimizing backend performance, handling large datasets).",
+        "Use the real-time online search tool to search Stack Overflow for content addressing this goal.",
+        "Use the Stack Overflow API to retrieve all information about the relevant questions.",
+        "Analyze top-voted answers and recurring mentions to identify popular community-endorsed solutions.",
+        "Summarize the reasons these tools are recommended (e.g., performance, community support, ease of use).",
+        "Provide direct links to the relevant Q&A threads for further reading."
+      ]
+    },
+    {
+      "task_name": "Provide Questions or Answers by Topic/Tag With Filters",
+      "steps": [
+        "Obtain the user’s topics or tags of interest, as well as any potential filters.",
+        "Query Stack Overflow (via the API) to retrieve the newest questions or answers associated with these tags and filters (if any).",
+        "Filter the results by recency to ensure the user sees the latest content.",
+        "Summarize notable insights, trends, or common issues emerging from these recent posts.",
+        "Include links to the Stack Overflow posts for easy access."
+      ]
+    },    
+    {
+      "task_name": "Help Developers Discover Questions to Answer",
+      "steps": [
+        "Receive from the user the tags or topics in which they want to contribute.",
+        "Query Stack Overflow for questions that are unanswered or have minimal answers.",
+        "Select a subset of these questions that appear well-suited to the user’s expertise.",
+        "Highlight the question titles, provide a brief summary, and a direct link to each question.",
+        "Encourage the user to contribute a well-informed answer to help fellow developers."
+      ]
+    },
+    {
+      "task_name": "Find Similar or Related Questions",
+      "steps": [
+        "Receive the user's query or problem statement for which they want to find similar or related questions.",
+        "If a question ID is provided, use the Stack Overflow API to retrieve key terms, the problem title, and content.",
+        "Use the Stack Overflow API and real-time search to get related questions based on key terms and query context.",
+        "Retrieve the results, including the titles, tags, and descriptions of potential matches.",
+        "Analyze the retrieved data to rank the questions based on relevance, using factors such as matching keywords, shared tags, and user engagement metrics (e.g., views, votes, and answers).",
+        "Filter out any duplicate or low-quality questions to refine the results.",
+        "Summarize the most relevant questions in an easily digestible format with links to the full threads on Stack Overflow for further exploration."
+      ]
+    },
+    {
+      "task_name": "Guide the user in effectively using Stack Overflow",
+      "steps": [
+          "Ask about the specific type of programming-related issue or question they need help with.",
+          "Use the RAGWorker to retrieve information from Stack Overflow’s help pages to provide guidance on how to use the platform effectively.",
+          "Present the retrieved information to the user, highlighting how to search for existing questions, apply relevant tags, filter results, and review accepted and upvoted answers.",
+          "Ask the user if they need more details on how to formulate a new question, including writing a clear problem statement, providing code snippets, and referencing error messages.",
+          "If necessary, use the RAGWorker again to gather additional tips from the Stack Overflow help pages on improving the clarity and quality of questions.",
+          "Confirm if the user understands how to interact with the community—e.g., commenting on answers, upvoting useful responses, and accepting the best answer—or if they need further clarification.",
+          "If the user is ready, guide them through posting their own question or navigating to relevant existing threads, and provide any additional assistance as needed."
+      ]
+    }
+  
+  
+  ],
+  "apis": [
+    "https://api.stackexchange.com/docs/answers",
+    "https://api.stackexchange.com/docs/answers-by-ids",
+    "https://api.stackexchange.com/docs/comments",
+    "https://api.stackexchange.com/docs/comments-by-ids",
+    "https://api.stackexchange.com/docs/questions",
+    "https://api.stackexchange.com/docs/questions-by-ids",
+    "https://api.stackexchange.com/docs/answers-on-questions",
+    "https://api.stackexchange.com/docs/comments-on-questions",
+    "https://api.stackexchange.com/docs/related-questions",
+    "https://api.stackexchange.com/docs/no-answer-questions",
+    "https://api.stackexchange.com/docs/unanswered-questions",
+    "https://api.stackexchange.com/docs/tags"
+  ],
+  "workers": [
+    "RAGWorker",
+    "RagMsgWorker",
+    "MessageWorker",
+    "SearchWorker",
+    "DefaultWorker",
+    "StackOverflowAPIWorker"
+  ]
+}

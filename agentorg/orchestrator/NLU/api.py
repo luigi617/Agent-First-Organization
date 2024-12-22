@@ -10,7 +10,7 @@ from fastapi import FastAPI, Response
 
 from agentorg.utils.graph_state import Slots
 from dotenv import load_dotenv
-load_dotenv()
+load_dotenv(override=True)
 
 from agentorg.utils.model_config import MODEL
 

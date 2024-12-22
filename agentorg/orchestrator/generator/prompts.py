@@ -359,3 +359,52 @@ Start Message:
 Builder's prompt: The builder want to create a chatbot - {role}. {u_objective}
 Start Message:
 """
+
+generate_intent_from_task_prompt = """
+The builder plans to create a chatbot designed to fulfill user's objectives. Given task name and steps of task, your task is to identify user's intent. Return the response in JSON format.
+
+For Example:
+
+Task name: Assist users in exploring and finding suitable Airbnb listings based on their preferences like location, date range, price, and amenities.
+Task steps:
+[
+    "Greet the user and ask for their specific inquiry regarding purchasing or renting robots."
+    "Use the RAGWorker to retrieve detailed information from the company's internal documentation about purchasing and rental options for robots.",
+    "Present the retrieved information to the user, including details about pricing, terms, and conditions for both purchasing and rental options.",
+    "Ask the user if they have any specific questions or need further clarification about the provided information.",
+    "Based on the user's follow-up questions, use the RAGWorker again if necessary to provide additional information or clarification.",
+    "Guide the user through the process of completing a transaction, if applicable, or provide contact information for further assistance if needed."
+]
+Answer:
+```json
+{{
+    "message": "User seeks information about robot specifications and capabilities"
+}}
+```
+
+Task name: {task_name}
+Task steps:
+{task_steps}
+Answer:
+"""
+
+
+
+website_example = '''<html lang="en"> <head> <title> Usage of /answers [GET] - Stack Exchange API </title> <link href="https://cdn.sstatic.net/apiv2/all.css?v=01c20169aefd" rel="stylesheet"/> <script> var parameters = {"page":"number","pagesize":"number","fromdate":"date","todate":"date","order":["desc","asc"],"min":"depends","max":"depends","sort":{"activity":"date","creation":"date","votes":"number"}}; var method = "/2.3/answers"; var filterName = "default"; </script> <script> if (state && state.charAt(0) == '#') { state = state.substring(1); } // all of these parameters are set in the ConsoleParameters section $(function () { StackExchange.api.v2.console.init( parameters, method, $('#console'), filterName, filter, dependentTypes, typeof(dontRequireSite) != 'undefined',                state, filterTypeLinks, typeof (isPostMethod) != 'undefined' ? 'POST' : 'GET', false ); }); </script> </head> <body> <div class="outside header"> <div class="inside"> <div class="logo"> <a href="/"> </a> </div> </div> </div> <div class="outside content"> <div class="inside"> <div class="mainbar"> <div class="subheader"> <h1> Usage of /answers <span class="http-method" title="expects a GET HTTP method"> GET </span> </h1> </div> <h2> Discussion </h2> <div class="indented"> <p> Returns all the undeleted answers in the system. </p> <p> The sorts accepted by this method operate on the following fields of the <a href="/docs/types/answer"> answer object </a> : <code> activity </code> is the default sort. <br/> <br/> It is possible to <a href="/docs/min-max"> create moderately complex queries </a> using <code> sort </code> , <code> min </code> , <code> max </code> , <code> fromdate </code> , and <code> todate </code> . </p> <p> This method returns a list of <a href="/docs/types/answer"> answers </a> . </p> </div> <h2 style="margin-top: 30px;"> Try It </h2> <div class="console" id="console"> <div class="console-header"> <div class="console-header-left"> <div class="site"> <div class="edit-site" title="site"> <span class="current-site"> Stack Overflow </span> <a class="show-site-editor" href="#" title="edit-site"> [edit] </a> <span class="site-param" style="display: none;"> stackoverflow </span> <span class="site-url" style="display:none;"> https://stackoverflow.com </span> </div> <div class="site-editor"> <input class="site-picker" type="text"/> </div> </div> <span class="access-token-url" style="display:none"> https://stackoverflow.com/oauth/dialog?client_id=1&amp;key=U4DMV*8nvpm3EOpvf69Rxw((&amp; </span> <span class="app-key" style="display:none"> U4DMV*8nvpm3EOpvf69Rxw(( </span> <span class="scope" style="display:none"> </span> <span class="method-type" style="display:none"> </span> <span class="req-url"> </span> </div> <div class="console-header-right"> <div class="permalink"> <a href="#"> link </a> </div> <div class="console-header-separator"> </div> <div class="filter-link"> <div class="edit-filter" title="filter"> <span class="current-filter"> default </span> filter <a class="expand-filter-popup" href="#" title="edit filter"> [edit] ▼ </a> </div> <div class="editing-filter"> <input class="manual-filter" type="text"/> filter <a class="collapse-filter-popup" href="#"> ▲ </a> </div> </div> </div> <br style="clear: both;"> </br> </div> <div class="popup-container"> <div class="permalink-popup"> <input type="text"/> </div> <div class="filter-popup"> <div class="filter-content"> <div class="filter-vis"> </div> <a class="filter-invis-link" href="#"> show [n] types not returned by /answers GET </a> <div class="filter-invis"> </div> <div class="unsafe-container"> <input class="filter-unsafe" id="filter-unsafe" name="unsafe" type="checkbox"/> <label for="filter-unsafe"> make unsafe <a href="/docs/filters" target="_blank"> (?) </a> </label> </div> </div> <div class="filter-controls"> <div class="filter-controls-left"> <a class="filter-unselect-all" href="#"> unselect all </a> </div> <div class="filter-controls-right"> <a class="filter-cancel" href="#"> cancel </a> </div> </div> </div> </div> <div class="parameters"> </div> <div class="fetched-url"> </div> <div class="run-button-container"> </div> <br style="clear: both;"> <div class="result"> <pre class="prettyprint lang-js"><code></code></pre> </div> </br> </div> </div> <div class="sidebar"> <div class="module help"> <div class="mobile-nav"> Navigation <span class="mobile-nav-arrow"> </span> </div> <div class="help-list"> </div> </div> </div> </div> <div class="bottom"> <div class="bottom-wrapper"> </div> </div> </div> <div class="outside footer"> <!-- StackOverflow.Api.V2 2024.12.6.44935 --> <div class="inside"> <p class="footer-links"> <a href="https://stackexchange.com/about"> about </a> <a href="https://stackoverflow.blog"> blog </a> <a href="https://stackexchange.com/legal/api-terms-of-use"> terms of use </a> <a href="/cdn-cgi/l/email-protection#bcc8d9ddd197ddccd5fccfc8dddfd7d9c4dfd4ddd2dbd992dfd3d1"> contact us </a> <a href="http://stackapps.com/"> feedback always welcome </a> </p> <p style="margin-bottom: 0;"> site design / logo © 2024 Stack Exchange, Inc; user contributions licensed under <a href="https://stackoverflow.com/help/licensing" rel="license"> CC BY-SA </a> </p> </div> <br style="clear: both;"/> </div> <script> $(function() { $(".mobile-nav").on("click", function() { $(".help-list").toggleClass("active"); }); }); </script> </body> </html>'''
+extract_info_from_api_doc_prompt = """
+Given a extracted html api documentation website, your task is to extract the api url, the description of the api, and what are its available parameters and values that the parameters can have and the format.
+
+For Example:
+Extracted html api documentation website:
+""" + website_example + """
+Answer:
+```json
+{{
+    "description": "Returns all the undeleted answers in the system.",
+    "parameters": "page (number): Specifies the page of results to retrieve. pagesize (number): Defines the number of results per page. fromdate (date): The start date from which to retrieve answers, given in UNIX timestamp format. todate (date): The end date up to which to retrieve answers, given in UNIX timestamp format. order (array of "desc" or "asc"): Specifies the order of results; can either be descending ("desc") or ascending ("asc"). min (depends): This parameter is used for specifying a minimum value filter for specific fields, such as votes. max (depends): This parameter is used for specifying a maximum value filter for specific fields, such as votes. sort (object): Defines the sorting criteria. The options for sorting are: activity: Sort by activity date. creation: Sort by creation date. votes: Sort by number of votes."
+    "api_url": "/2.3/answers"
+}}
+```
+
+Extracted html api documentation website:
+"""

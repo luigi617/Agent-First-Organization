@@ -1,0 +1,1 @@
+python create.py --config ./examples/stackoverflow_assistant_config.json --output-dir ./examples/stackoverflow_assistant

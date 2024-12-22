@@ -21,7 +21,7 @@ from textual.widgets.tree import TreeNode
 
 from agentorg.utils.utils import postprocess_json
 from agentorg.orchestrator.generator.prompts import *
-from agentorg.utils.loader import Loader
+from agentorg.utils.loader import APILoader, Loader
 from agentorg.workers.worker import WORKER_REGISTRY
 
 
@@ -172,6 +172,7 @@ class Generator:
         self.rag_docs = self.product_kwargs.get("rag_docs") 
         self.tasks = self.product_kwargs.get("tasks")
         self.workers = self.product_kwargs.get("workers")
+        self.apis = self.product_kwargs.get("apis")
         self.model = model
         self.timestamp = datetime.now().strftime("%Y%m%d%H%M%S")
         self.output_dir = output_dir
@@ -186,12 +187,18 @@ class Generator:
         self.tasks = postprocess_json(answer)
 
     def _format_tasks(self):
-        # TODO: need to use LLM to match the semantics meaning of the tasks
         new_format_tasks = []
         for task_str in self.tasks:
             task = {}
-            task['intent'] = task_str
-            task['task'] = task_str
+
+            prompt = PromptTemplate.from_template(generate_intent_from_task_prompt)
+            input_prompt = prompt.invoke({"task_name": task_str["task_name"], "task_steps": task_str["steps"]})
+            final_chain = self.model | StrOutputParser()
+            answer = final_chain.invoke(input_prompt)
+            answer = postprocess_json(answer)
+
+            task['intent'] = answer["message"]
+            task['task'] = task_str["task_name"]
             new_format_tasks.append(task)
         self.tasks = new_format_tasks
 
@@ -367,6 +374,16 @@ class Generator:
         else:
             self.documents = ""
 
+    def _load_apis(self):
+        if self.apis:
+            filepath = os.path.join(self.output_dir, "api_information.json")
+            api_all_info = []
+            api_loader = APILoader()
+            for api in self.apis:
+                api_info = api_loader.get_outsource_urls(api)
+                api_all_info.append(api_info)
+            APILoader.save(filepath, api_all_info)
+
 
     def generate(self):
         # Step 0: Load the docs
@@ -403,7 +420,6 @@ class Generator:
         hitl_result = app.run()
         task_planning_filepath = os.path.join(self.output_dir, f'taskplanning.json')
         json.dump(hitl_result, open(task_planning_filepath, "w"), indent=4)
-
         # Step 4: Pair task with worker
         finetuned_best_practices = []
         for idx_t, task in enumerate(hitl_result):
@@ -425,5 +441,8 @@ class Generator:
         taskgraph_filepath = os.path.join(self.output_dir, f'taskgraph.json')
         with open(taskgraph_filepath, "w") as f:
             json.dump(task_graph, f, indent=4)
+
+        # Step 7: Load APIs
+        self._load_apis()
 
         return taskgraph_filepath

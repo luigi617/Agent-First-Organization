@@ -1,0 +1,899 @@
+{
+    "nodes": [
+        [
+            "0",
+            {
+                "name": "MessageWorker",
+                "attribute": {
+                    "value": "Hello! I'm your Stack Overflow Developer Assistant. How can I assist you with your coding challenges today?",
+                    "task": "start message",
+                    "directed": false
+                },
+                "limit": 1,
+                "type": "start"
+            }
+        ],
+        [
+            "1",
+            {
+                "name": "DefaultWorker",
+                "attribute": {
+                    "value": "Could you please provide more details about the coding error you encountered? Sharing any error messages or code snippets would be helpful.",
+                    "task": "Ask the user to provide detailed information about the coding error, including error messages and code snippets if possible.",
+                    "directed": false
+                },
+                "limit": 1
+            }
+        ],
+        [
+            "2",
+            {
+                "name": "DefaultWorker",
+                "attribute": {
+                    "value": "",
+                    "task": "Utilize the StackOverflowAPIWorker to search Stack Overflow for existing solutions or discussions related to the provided error details.",
+                    "directed": false
+                },
+                "limit": 1
+            }
+        ],
+        [
+            "3",
+            {
+                "name": "DefaultWorker",
+                "attribute": {
+                    "value": "Here are some solutions from Stack Overflow that might help with your issue.",
+                    "task": "Present the user with the most relevant solutions or discussions found, highlighting key suggestions or answers.",
+                    "directed": false
+                },
+                "limit": 1
+            }
+        ],
+        [
+            "4",
+            {
+                "name": "DefaultWorker",
+                "attribute": {
+                    "value": "Do you need further clarification on the provided solutions, or do you have any additional questions?",
+                    "task": "Ask the user if they need further clarification on the provided solutions or if they have additional questions.",
+                    "directed": false
+                },
+                "limit": 1
+            }
+        ],
+        [
+            "5",
+            {
+                "name": "DefaultWorker",
+                "attribute": {
+                    "value": "Let me find more information for you. Please hold on for a moment.",
+                    "task": "If the user needs further assistance, use the SearchWorker to find additional information from real-time online sources or other resources as needed.",
+                    "directed": false
+                },
+                "limit": 1
+            }
+        ],
+        [
+            "6",
+            {
+                "name": "DefaultWorker",
+                "attribute": {
+                    "value": "Could you please describe the specific problem or requirement you're facing? This will help us provide the most relevant assistance.",
+                    "task": "Inquire about the specific problem or requirement the user is facing to understand the context (e.g., programming language, framework, functionality needed).",
+                    "directed": false
+                },
+                "limit": 1
+            }
+        ],
+        [
+            "7",
+            {
+                "name": "DefaultWorker",
+                "attribute": {
+                    "value": "",
+                    "task": "Use the StackOverflowAPIWorker to retrieve relevant tags, questions, or answers related to the user's problem and identify commonly suggested tools or libraries.",
+                    "directed": false
+                },
+                "limit": 1
+            }
+        ],
+        [
+            "8",
+            {
+                "name": "DefaultWorker",
+                "attribute": {
+                    "value": "Based on your requirements, here are some tools and libraries that might be helpful: [Tool/Library Name] - [Brief Description].",
+                    "task": "Present a list of recommended tools or libraries to the user, including brief descriptions and potential use cases.",
+                    "directed": false
+                },
+                "limit": 1
+            }
+        ],
+        [
+            "9",
+            {
+                "name": "DefaultWorker",
+                "attribute": {
+                    "value": "Do you need more information or a comparison between these options?",
+                    "task": "Ask if the user needs further information or a comparison between the suggested options.",
+                    "directed": false
+                },
+                "limit": 1
+            }
+        ],
+        [
+            "10",
+            {
+                "name": "DefaultWorker",
+                "attribute": {
+                    "value": "",
+                    "task": "Provide additional details or comparisons if requested, using StackOverflowAPIWorker to fetch more specific community feedback or reviews.",
+                    "directed": false
+                },
+                "limit": 1
+            }
+        ],
+        [
+            "11",
+            {
+                "name": "DefaultWorker",
+                "attribute": {
+                    "value": "Are you satisfied with the suggestions, or do you need further assistance?",
+                    "task": "Confirm if the user is satisfied with the suggestions or needs further assistance.",
+                    "directed": false
+                },
+                "limit": 1
+            }
+        ],
+        [
+            "12",
+            {
+                "name": "DefaultWorker",
+                "attribute": {
+                    "value": "What specific topic or tag are you interested in? Do you have any filters you would like to apply such as date, votes, or sorting?",
+                    "task": "Inquire about the specific topic or tag the user is interested in, as well as any filters they would like to apply (e.g., date, votes, sorting).",
+                    "directed": false
+                },
+                "limit": 1
+            }
+        ],
+        [
+            "13",
+            {
+                "name": "DefaultWorker",
+                "attribute": {
+                    "value": "",
+                    "task": "Use the StackOverflowAPIWorker to retrieve questions or answers related to the specified topic/tag and apply the requested filters.",
+                    "directed": false
+                },
+                "limit": 1
+            }
+        ],
+        [
+            "14",
+            {
+                "name": "DefaultWorker",
+                "attribute": {
+                    "value": "Here is a list of questions or answers related to your inquiry. Do you need further assistance or have any additional queries?",
+                    "task": "Present the curated list of questions or answers to the user and ask if they need further assistance or have additional queries.",
+                    "directed": false
+                },
+                "limit": 1
+            }
+        ],
+        [
+            "15",
+            {
+                "name": "DefaultWorker",
+                "attribute": {
+                    "value": "If you're interested, you can engage by answering unanswered questions or contributing to discussions in the community.",
+                    "task": "If the user is interested, provide guidance on how to engage with the content or contribute to the community (e.g., answer unanswered questions).",
+                    "directed": false
+                },
+                "limit": 1
+            }
+        ],
+        [
+            "16",
+            {
+                "name": "DefaultWorker",
+                "attribute": {
+                    "value": "Could you please tell me about your areas of expertise or any specific technologies or programming languages you are interested in?",
+                    "task": "Inquire about the developer's areas of expertise or interest (e.g., specific programming languages, technologies, or topics).",
+                    "directed": false
+                },
+                "limit": 1
+            }
+        ],
+        [
+            "17",
+            {
+                "name": "DefaultWorker",
+                "attribute": {
+                    "value": "",
+                    "task": "Use the StackOverflowAPIWorker to retrieve a list of unanswered questions or questions with low engagement in the developer's areas of interest.",
+                    "directed": false
+                },
+                "limit": 1
+            }
+        ],
+        [
+            "18",
+            {
+                "name": "DefaultWorker",
+                "attribute": {
+                    "value": "Here are some questions that match your interests. Would you like more details on any specific question?",
+                    "task": "Present the curated list of questions to the developer and ask if they would like more details on any specific question.",
+                    "directed": false
+                },
+                "limit": 1
+            }
+        ],
+        [
+            "19",
+            {
+                "name": "DefaultWorker",
+                "attribute": {
+                    "value": "",
+                    "task": "Provide additional information or context about a selected question if requested by the developer, using the StackOverflowAPIWorker to fetch detailed data.",
+                    "directed": false
+                },
+                "limit": 1
+            }
+        ],
+        [
+            "20",
+            {
+                "name": "DefaultWorker",
+                "attribute": {
+                    "value": "Are you ready to answer this question, or do you need assistance with finding other questions?",
+                    "task": "Ask if the developer is ready to answer the question or if they need further assistance in finding other questions.",
+                    "directed": false
+                },
+                "limit": 1
+            }
+        ],
+        [
+            "21",
+            {
+                "name": "DefaultWorker",
+                "attribute": {
+                    "value": "Here's how you can submit your answer on Stack Overflow. Would you like to explore more questions instead?",
+                    "task": "Guide the developer on how to submit their answer on Stack Overflow or assist them in exploring more questions if they are not ready to answer.",
+                    "directed": false
+                },
+                "limit": 1
+            }
+        ],
+        [
+            "22",
+            {
+                "name": "DefaultWorker",
+                "attribute": {
+                    "value": "Could you please provide a detailed description of the coding issue you're facing or the topic you're interested in?",
+                    "task": "Use the MessageWorker to ask the user for a detailed description of their coding issue or the topic they are interested in.",
+                    "directed": false
+                },
+                "limit": 1
+            }
+        ],
+        [
+            "23",
+            {
+                "name": "DefaultWorker",
+                "attribute": {
+                    "value": "",
+                    "task": "Utilize the StackOverflowAPIWorker to search for similar or related questions on Stack Overflow based on the user's description.",
+                    "directed": false
+                },
+                "limit": 1
+            }
+        ],
+        [
+            "24",
+            {
+                "name": "DefaultWorker",
+                "attribute": {
+                    "value": "Here are some related questions I found on Stack Overflow. Do any of these seem helpful?",
+                    "task": "Employ the MessageWorker to present a list of related questions to the user and ask if any of these are helpful.",
+                    "directed": false
+                },
+                "limit": 1
+            }
+        ],
+        [
+            "25",
+            {
+                "name": "DefaultWorker",
+                "attribute": {
+                    "value": "",
+                    "task": "If the user needs more options or clarification, repeat the search with refined criteria using the StackOverflowAPIWorker.",
+                    "directed": false
+                },
+                "limit": 1
+            }
+        ],
+        [
+            "26",
+            {
+                "name": "DefaultWorker",
+                "attribute": {
+                    "value": "Does this information meet your needs, or do you require further assistance?",
+                    "task": "Confirm with the user if the provided information meets their needs or if further assistance is required, using the MessageWorker.",
+                    "directed": false
+                },
+                "limit": 1
+            }
+        ],
+        [
+            "27",
+            {
+                "name": "DefaultWorker",
+                "attribute": {
+                    "value": "What specific assistance or information do you need regarding Stack Overflow? Are you looking for troubleshooting help, recommendations, or how to contribute?",
+                    "task": "Ask the user what specific assistance or information they need regarding Stack Overflow (e.g., troubleshooting, finding recommendations, contributing).",
+                    "directed": false
+                },
+                "limit": 1
+            }
+        ],
+        [
+            "28",
+            {
+                "name": "DefaultWorker",
+                "attribute": {
+                    "value": "",
+                    "task": "Use StackOverflowAPIWorker to fetch relevant information or resources based on the user's stated needs, such as trending questions, unanswered questions, or troubleshooting guides.",
+                    "directed": false
+                },
+                "limit": 1
+            }
+        ],
+        [
+            "29",
+            {
+                "name": "DefaultWorker",
+                "attribute": {
+                    "value": "Here is the information I found for you. Does this address your needs, or do you require further assistance?",
+                    "task": "Present the retrieved information to the user and ask if it addresses their needs or if they require further assistance.",
+                    "directed": false
+                },
+                "limit": 1
+            }
+        ],
+        [
+            "30",
+            {
+                "name": "DefaultWorker",
+                "attribute": {
+                    "value": "If you need more help, I can provide additional guidance or resources. Would you like more detailed explanations or information on community policies?",
+                    "task": "Offer additional guidance or resources if the user needs more help, using RAGWorker to provide more detailed explanations or community policies if necessary.",
+                    "directed": false
+                },
+                "limit": 1
+            }
+        ],
+        [
+            "31",
+            {
+                "name": "DefaultWorker",
+                "attribute": {
+                    "value": "Are you satisfied with the assistance provided? Is there anything else I can help you with regarding Stack Overflow?",
+                    "task": "Confirm if the user is satisfied with the assistance and offer to help with any other questions or tasks related to Stack Overflow.",
+                    "directed": false
+                },
+                "limit": 1
+            }
+        ]
+    ],
+    "edges": [
+        [
+            "0",
+            "1",
+            {
+                "intent": "User seeks assistance in resolving coding errors and debugging",
+                "attribute": {
+                    "weight": 1,
+                    "pred": true,
+                    "definition": "",
+                    "sample_utterances": []
+                }
+            }
+        ],
+        [
+            "1",
+            "2",
+            {
+                "intent": "None",
+                "attribute": {
+                    "weight": 1,
+                    "pred": false,
+                    "definition": "",
+                    "sample_utterances": []
+                }
+            }
+        ],
+        [
+            "2",
+            "3",
+            {
+                "intent": "None",
+                "attribute": {
+                    "weight": 1,
+                    "pred": false,
+                    "definition": "",
+                    "sample_utterances": []
+                }
+            }
+        ],
+        [
+            "3",
+            "4",
+            {
+                "intent": "None",
+                "attribute": {
+                    "weight": 1,
+                    "pred": false,
+                    "definition": "",
+                    "sample_utterances": []
+                }
+            }
+        ],
+        [
+            "4",
+            "5",
+            {
+                "intent": "None",
+                "attribute": {
+                    "weight": 1,
+                    "pred": false,
+                    "definition": "",
+                    "sample_utterances": []
+                }
+            }
+        ],
+        [
+            "0",
+            "6",
+            {
+                "intent": "User seeks recommendations for tools or libraries to address a specific development goal or challenge",
+                "attribute": {
+                    "weight": 1,
+                    "pred": true,
+                    "definition": "",
+                    "sample_utterances": []
+                }
+            }
+        ],
+        [
+            "6",
+            "7",
+            {
+                "intent": "None",
+                "attribute": {
+                    "weight": 1,
+                    "pred": false,
+                    "definition": "",
+                    "sample_utterances": []
+                }
+            }
+        ],
+        [
+            "7",
+            "8",
+            {
+                "intent": "None",
+                "attribute": {
+                    "weight": 1,
+                    "pred": false,
+                    "definition": "",
+                    "sample_utterances": []
+                }
+            }
+        ],
+        [
+            "8",
+            "9",
+            {
+                "intent": "None",
+                "attribute": {
+                    "weight": 1,
+                    "pred": false,
+                    "definition": "",
+                    "sample_utterances": []
+                }
+            }
+        ],
+        [
+            "9",
+            "10",
+            {
+                "intent": "None",
+                "attribute": {
+                    "weight": 1,
+                    "pred": false,
+                    "definition": "",
+                    "sample_utterances": []
+                }
+            }
+        ],
+        [
+            "10",
+            "11",
+            {
+                "intent": "None",
+                "attribute": {
+                    "weight": 1,
+                    "pred": false,
+                    "definition": "",
+                    "sample_utterances": []
+                }
+            }
+        ],
+        [
+            "0",
+            "12",
+            {
+                "intent": "User seeks to find recent questions or answers on Stack Overflow related to specific topics or tags",
+                "attribute": {
+                    "weight": 1,
+                    "pred": true,
+                    "definition": "",
+                    "sample_utterances": []
+                }
+            }
+        ],
+        [
+            "12",
+            "13",
+            {
+                "intent": "None",
+                "attribute": {
+                    "weight": 1,
+                    "pred": false,
+                    "definition": "",
+                    "sample_utterances": []
+                }
+            }
+        ],
+        [
+            "13",
+            "14",
+            {
+                "intent": "None",
+                "attribute": {
+                    "weight": 1,
+                    "pred": false,
+                    "definition": "",
+                    "sample_utterances": []
+                }
+            }
+        ],
+        [
+            "14",
+            "15",
+            {
+                "intent": "None",
+                "attribute": {
+                    "weight": 1,
+                    "pred": false,
+                    "definition": "",
+                    "sample_utterances": []
+                }
+            }
+        ],
+        [
+            "0",
+            "16",
+            {
+                "intent": "User seeks assistance in finding unanswered or minimally answered questions on Stack Overflow to contribute to based on their expertise.",
+                "attribute": {
+                    "weight": 1,
+                    "pred": true,
+                    "definition": "",
+                    "sample_utterances": []
+                }
+            }
+        ],
+        [
+            "16",
+            "17",
+            {
+                "intent": "None",
+                "attribute": {
+                    "weight": 1,
+                    "pred": false,
+                    "definition": "",
+                    "sample_utterances": []
+                }
+            }
+        ],
+        [
+            "17",
+            "18",
+            {
+                "intent": "None",
+                "attribute": {
+                    "weight": 1,
+                    "pred": false,
+                    "definition": "",
+                    "sample_utterances": []
+                }
+            }
+        ],
+        [
+            "18",
+            "19",
+            {
+                "intent": "None",
+                "attribute": {
+                    "weight": 1,
+                    "pred": false,
+                    "definition": "",
+                    "sample_utterances": []
+                }
+            }
+        ],
+        [
+            "19",
+            "20",
+            {
+                "intent": "None",
+                "attribute": {
+                    "weight": 1,
+                    "pred": false,
+                    "definition": "",
+                    "sample_utterances": []
+                }
+            }
+        ],
+        [
+            "20",
+            "21",
+            {
+                "intent": "None",
+                "attribute": {
+                    "weight": 1,
+                    "pred": false,
+                    "definition": "",
+                    "sample_utterances": []
+                }
+            }
+        ],
+        [
+            "0",
+            "22",
+            {
+                "intent": "User seeks to find similar or related questions based on a given query or problem statement",
+                "attribute": {
+                    "weight": 1,
+                    "pred": true,
+                    "definition": "",
+                    "sample_utterances": []
+                }
+            }
+        ],
+        [
+            "22",
+            "23",
+            {
+                "intent": "None",
+                "attribute": {
+                    "weight": 1,
+                    "pred": false,
+                    "definition": "",
+                    "sample_utterances": []
+                }
+            }
+        ],
+        [
+            "23",
+            "24",
+            {
+                "intent": "None",
+                "attribute": {
+                    "weight": 1,
+                    "pred": false,
+                    "definition": "",
+                    "sample_utterances": []
+                }
+            }
+        ],
+        [
+            "24",
+            "25",
+            {
+                "intent": "None",
+                "attribute": {
+                    "weight": 1,
+                    "pred": false,
+                    "definition": "",
+                    "sample_utterances": []
+                }
+            }
+        ],
+        [
+            "25",
+            "26",
+            {
+                "intent": "None",
+                "attribute": {
+                    "weight": 1,
+                    "pred": false,
+                    "definition": "",
+                    "sample_utterances": []
+                }
+            }
+        ],
+        [
+            "0",
+            "27",
+            {
+                "intent": "User seeks guidance on effectively using Stack Overflow for programming-related queries",
+                "attribute": {
+                    "weight": 1,
+                    "pred": true,
+                    "definition": "",
+                    "sample_utterances": []
+                }
+            }
+        ],
+        [
+            "27",
+            "28",
+            {
+                "intent": "None",
+                "attribute": {
+                    "weight": 1,
+                    "pred": false,
+                    "definition": "",
+                    "sample_utterances": []
+                }
+            }
+        ],
+        [
+            "28",
+            "29",
+            {
+                "intent": "None",
+                "attribute": {
+                    "weight": 1,
+                    "pred": false,
+                    "definition": "",
+                    "sample_utterances": []
+                }
+            }
+        ],
+        [
+            "29",
+            "30",
+            {
+                "intent": "None",
+                "attribute": {
+                    "weight": 1,
+                    "pred": false,
+                    "definition": "",
+                    "sample_utterances": []
+                }
+            }
+        ],
+        [
+            "30",
+            "31",
+            {
+                "intent": "None",
+                "attribute": {
+                    "weight": 1,
+                    "pred": false,
+                    "definition": "",
+                    "sample_utterances": []
+                }
+            }
+        ]
+    ],
+    "role": "Stack Overflow Developer Assistant",
+    "user_objective": "The developer assistant helps users troubleshoot coding issues, discover relevant and trending community recommendations, and find opportunities to contribute by answering unanswered questions, all through interactions with Stack Overflow resources.",
+    "builder_objective": "The assistant aims to enhance user productivity and engagement with the Stack Overflow community. It does so by efficiently providing relevant coding solutions, monitoring new and trending topics, suggesting valuable tools or libraries based on community input, and guiding users to contribute answers where needed.",
+    "domain": "Software Development & Programming Communities",
+    "intro": "Stack Overflow is a leading Q&A platform where developers collaborate and share knowledge. Users can seek solutions to coding errors, explore popular tags, discover emerging technologies, get recommendations on tools or libraries, and find opportunities to contribute back by answering unanswered questions. The platform fosters a community-driven environment where both experienced and novice programmers benefit from collective expertise.",
+    "task_docs": [],
+    "rag_docs": [
+        {
+            "source": "https://stackoverflow.com/help",
+            "desc": "Stack Overflow Help Center providing guidelines, policies, and instructions on how to use the platform effectively.",
+            "num": 30
+        }
+    ],
+    "tasks": [
+        {
+            "task_name": "Find Solutions to Coding Errors",
+            "steps": [
+                "Gather the user\u2019s error message, bug description, or problem details.",
+                "Use the real-time online search tool to search Stack Overflow for relevant questions.",
+                "Use the Stack Overflow API to retrieve all information about the relevant questions.",
+                "Identify the top-rated or accepted answers that closely match the user\u2019s issue.",
+                "Summarize the key solution steps and reasoning.",
+                "Provide direct links to the Stack Overflow question and its accepted/highly upvoted answer."
+            ]
+        },
+        {
+            "task_name": "Suggest Tools or Libraries",
+            "steps": [
+                "Receive the user\u2019s development goal or specific challenge (e.g., building a frontend in React, optimizing backend performance, handling large datasets).",
+                "Use the real-time online search tool to search Stack Overflow for content addressing this goal.",
+                "Use the Stack Overflow API to retrieve all information about the relevant questions.",
+                "Analyze top-voted answers and recurring mentions to identify popular community-endorsed solutions.",
+                "Summarize the reasons these tools are recommended (e.g., performance, community support, ease of use).",
+                "Provide direct links to the relevant Q&A threads for further reading."
+            ]
+        },
+        {
+            "task_name": "Provide Questions or Answers by Topic/Tag With Filters",
+            "steps": [
+                "Obtain the user\u2019s topics or tags of interest, as well as any potential filters.",
+                "Query Stack Overflow (via the API) to retrieve the newest questions or answers associated with these tags and filters (if any).",
+                "Filter the results by recency to ensure the user sees the latest content.",
+                "Summarize notable insights, trends, or common issues emerging from these recent posts.",
+                "Include links to the Stack Overflow posts for easy access."
+            ]
+        },
+        {
+            "task_name": "Help Developers Discover Questions to Answer",
+            "steps": [
+                "Receive from the user the tags or topics in which they want to contribute.",
+                "Query Stack Overflow for questions that are unanswered or have minimal answers.",
+                "Select a subset of these questions that appear well-suited to the user\u2019s expertise.",
+                "Highlight the question titles, provide a brief summary, and a direct link to each question.",
+                "Encourage the user to contribute a well-informed answer to help fellow developers."
+            ]
+        },
+        {
+            "task_name": "Find Similar or Related Questions",
+            "steps": [
+                "Receive the user's query or problem statement for which they want to find similar or related questions.",
+                "If a question ID is provided, use the Stack Overflow API to retrieve key terms, the problem title, and content.",
+                "Use the Stack Overflow API and real-time search to get related questions based on key terms and query context.",
+                "Retrieve the results, including the titles, tags, and descriptions of potential matches.",
+                "Analyze the retrieved data to rank the questions based on relevance, using factors such as matching keywords, shared tags, and user engagement metrics (e.g., views, votes, and answers).",
+                "Filter out any duplicate or low-quality questions to refine the results.",
+                "Summarize the most relevant questions in an easily digestible format with links to the full threads on Stack Overflow for further exploration."
+            ]
+        },
+        {
+            "task_name": "Guide the user in effectively using Stack Overflow",
+            "steps": [
+                "Ask about the specific type of programming-related issue or question they need help with.",
+                "Use the RAGWorker to retrieve information from Stack Overflow\u2019s help pages to provide guidance on how to use the platform effectively.",
+                "Present the retrieved information to the user, highlighting how to search for existing questions, apply relevant tags, filter results, and review accepted and upvoted answers.",
+                "Ask the user if they need more details on how to formulate a new question, including writing a clear problem statement, providing code snippets, and referencing error messages.",
+                "If necessary, use the RAGWorker again to gather additional tips from the Stack Overflow help pages on improving the clarity and quality of questions.",
+                "Confirm if the user understands how to interact with the community\u2014e.g., commenting on answers, upvoting useful responses, and accepting the best answer\u2014or if they need further clarification.",
+                "If the user is ready, guide them through posting their own question or navigating to relevant existing threads, and provide any additional assistance as needed."
+            ]
+        }
+    ],
+    "apis": [
+        "https://api.stackexchange.com/docs/answers",
+        "https://api.stackexchange.com/docs/answers-by-ids",
+        "https://api.stackexchange.com/docs/comments",
+        "https://api.stackexchange.com/docs/comments-by-ids",
+        "https://api.stackexchange.com/docs/questions",
+        "https://api.stackexchange.com/docs/questions-by-ids",
+        "https://api.stackexchange.com/docs/answers-on-questions",
+        "https://api.stackexchange.com/docs/comments-on-questions",
+        "https://api.stackexchange.com/docs/related-questions",
+        "https://api.stackexchange.com/docs/no-answer-questions",
+        "https://api.stackexchange.com/docs/unanswered-questions",
+        "https://api.stackexchange.com/docs/tags"
+    ],
+    "workers": [
+        "RAGWorker",
+        "RagMsgWorker",
+        "MessageWorker",
+        "SearchWorker",
+        "DefaultWorker",
+        "StackOverflowAPIWorker"
+    ],
+    "nluapi": "http://localhost:55135/nlu/predict",
+    "slotfillapi": "http://localhost:55135/slotfill/predict"
+}

@@ -1,0 +1,1 @@
+python eval.py --model_api http://127.0.0.1:8000/eval/chat --config ./examples/stackoverflow_assistant_config.json --documents_dir ./examples/stackoverflow_assistant --output-dir ./examples/stackoverflow_assistant --max_turns 8

@@ -2,11 +2,16 @@ import logging
 import time
 from pathlib import Path
 from typing import List
+from langchain_openai import ChatOpenAI
+from langchain_core.output_parsers import StrOutputParser
+from langchain.prompts import PromptTemplate
 import requests
 import pickle
 import uuid
 import argparse
 import os
+import re
+import json
 
 from webdriver_manager.chrome import ChromeDriverManager
 from selenium import webdriver
@@ -15,6 +20,11 @@ from urllib.parse import urljoin
 import networkx as nx
 from langchain.text_splitter import RecursiveCharacterTextSplitter
 from langchain_core.documents import Document
+
+from agentorg.utils.model_config import MODEL
+from agentorg.utils.utils import chunk_string, postprocess_json
+
+from agentorg.orchestrator.generator.prompts import extract_info_from_api_doc_prompt
 
 
 # Configure logging
@@ -241,3 +251,68 @@ class Loader:
                 langchain_docs.append(Document(page_content=txt, metadata={"source": url_obj.url}))
         return langchain_docs
 
+
+
+class APILoader:
+    def __init__(self):
+        self.llm = ChatOpenAI(model=MODEL["model_type_or_path"], timeout=30000)
+        pass
+    
+    def get_outsource_urls(self, url: str) -> dict:
+        headers = {
+            'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/14.0.3 Safari/605.1.15'
+        } 
+        api_info = {}
+        try:
+            response = requests.get(url, headers=headers, timeout=10)
+            # Check if the request was successful
+            if response.status_code == 200:
+                soup = BeautifulSoup(response.text, 'html.parser')
+                for element in soup(['style', 'meta', 'img', 'svg', 'button', 'ul']):
+                        element.extract()
+
+                for script in soup.find_all('script', src=True):
+                    script.extract()
+
+                for script in soup.find_all('script'):
+                    if script.string:
+                        cleaned_lines = []
+
+                        for row in script.string.split("\n"):
+                            if "var filter = " not in row and \
+                                "var filterTypeLinks =" not in row and \
+                                "var dependentTypes =" not in row and \
+                                "var state = " not in row:
+                                cleaned_lines.append(row)
+
+                        script.string.replace_with("\n".join(cleaned_lines))
+
+                clean_html = soup.prettify()
+                input_prompt = extract_info_from_api_doc_prompt + clean_html + "Answer:"
+                chunked_prompt = chunk_string(input_prompt, tokenizer=MODEL["tokenizer"], max_length=MODEL["context"])
+                final_chain = self.llm | StrOutputParser()
+                answer = final_chain.invoke(chunked_prompt)
+                answer = postprocess_json(answer)
+                api_info["doc_url"] = url
+                api_info["description"] = answer["description"]
+                api_info["parameters"] = answer["parameters"]
+                api_info["api_url"] = answer["api_url"]
+            else:
+                api_info["doc_url"] = url
+                api_info["description"] = "Error getting documentation"
+                api_info["parameters"] = "Error getting documentation"
+                api_info["api_url"] = "Error getting documentation"
+                logger.error(f"Failed to retrieve page {url}, status code: {response.status_code}")
+        except Exception as err:
+            api_info["description"] = "Error fetching documentation"
+            api_info["parameters"] = "Error fetching documentation"
+            api_info["api_url"] = "Error fetching documentation"
+            logger.error(f"Fail to get the page from {url}: {err}")
+        return api_info
+
+    @staticmethod
+    def save(file_path: str, docs: List[dict]):
+        with open(file_path, "w") as f:
+            json.dump(docs, f)
+    
+    

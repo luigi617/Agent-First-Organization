@@ -1,0 +1,63 @@
+[
+    {
+        "task_name": "Find Solutions to Coding Errors",
+        "steps": [
+            "Ask the user to provide detailed information about the coding error, including error messages and code snippets if possible.",
+            "Utilize the SearchWorker to search Stack Overflow for existing solutions or discussions related to the provided error details.",
+            "Present the user with the most relevant solutions or discussions found, highlighting key suggestions or answers.",
+            "Ask the user if they need further clarification on the provided solutions or if they have additional questions.",
+            "If the user needs further assistance, use the SearchWorker to find additional information from real-time online sources or other resources as needed."
+        ]
+    },
+    {
+        "task_name": "Suggest Tools or Libraries",
+        "steps": [
+            "Inquire about the specific problem or requirement the user is facing to understand the context (e.g., programming language, framework, functionality needed).",
+            "Use the StackOverflowAPIWorker to retrieve relevant tags, questions, or answers related to the user's problem and identify commonly suggested tools or libraries.",
+            "Present a list of recommended tools or libraries to the user, including brief descriptions and potential use cases.",
+            "Ask if the user needs further information or a comparison between the suggested options.",
+            "Provide additional details or comparisons if requested, using StackOverflowAPIWorker to fetch more specific community feedback or reviews.",
+            "Confirm if the user is satisfied with the suggestions or needs further assistance."
+        ]
+    },
+    {
+        "task_name": "Provide Questions or Answers by Topic/Tag With Filters",
+        "steps": [
+            "Inquire about the specific topic or tag the user is interested in, as well as any filters they would like to apply (e.g., date, votes, sorting).",
+            "Use the StackOverflowAPIWorker to retrieve questions or answers related to the specified topic/tag and apply the requested filters.",
+            "Present the curated list of questions or answers to the user and ask if they need further assistance or have additional queries.",
+            "If the user is interested, provide guidance on how to engage with the content or contribute to the community (e.g., answer unanswered questions)."
+        ]
+    },
+    {
+        "task_name": "Help Developers Discover Questions to Answer",
+        "steps": [
+            "Inquire about the developer's areas of expertise or interest (e.g., specific programming languages, technologies, or topics).",
+            "Use the StackOverflowAPIWorker to retrieve a list of unanswered questions or questions with low engagement in the developer's areas of interest.",
+            "Present the curated list of questions to the developer and ask if they would like more details on any specific question.",
+            "Provide additional information or context about a selected question if requested by the developer, using the StackOverflowAPIWorker to fetch detailed data.",
+            "Ask if the developer is ready to answer the question or if they need further assistance in finding other questions.",
+            "Guide the developer on how to submit their answer on Stack Overflow or assist them in exploring more questions if they are not ready to answer."
+        ]
+    },
+    {
+        "task_name": "Find Similar or Related Questions",
+        "steps": [
+            "Use the MessageWorker to ask the user for a detailed description of their coding issue or the topic they are interested in.",
+            "Utilize the StackOverflowAPIWorker to search for similar or related questions on Stack Overflow based on the user's description.",
+            "Employ the MessageWorker to present a list of related questions to the user and ask if any of these are helpful.",
+            "If the user needs more options or clarification, repeat the search with refined criteria using the StackOverflowAPIWorker.",
+            "Confirm with the user if the provided information meets their needs or if further assistance is required, using the MessageWorker."
+        ]
+    },
+    {
+        "task_name": "Guide the user in effectively using Stack Overflow",
+        "steps": [
+            "Ask the user what specific assistance or information they need regarding Stack Overflow (e.g., troubleshooting, finding recommendations, contributing).",
+            "Use StackOverflowAPIWorker to fetch relevant information or resources based on the user's stated needs, such as trending questions, unanswered questions, or troubleshooting guides.",
+            "Present the retrieved information to the user and ask if it addresses their needs or if they require further assistance.",
+            "Offer additional guidance or resources if the user needs more help, using RAGWorker to provide more detailed explanations or community policies if necessary.",
+            "Confirm if the user is satisfied with the assistance and offer to help with any other questions or tasks related to Stack Overflow."
+        ]
+    }
+]

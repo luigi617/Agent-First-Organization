@@ -6,7 +6,7 @@ import langsmith as ls
 
 from agentorg.utils.trace import TraceRunName
 
-load_dotenv()
+load_dotenv(override=True)
 logger = logging.getLogger(__name__)
 
 

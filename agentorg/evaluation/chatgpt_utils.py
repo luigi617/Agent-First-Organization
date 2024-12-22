@@ -6,7 +6,7 @@ from openai import OpenAI
 from dotenv import load_dotenv
 
 from agentorg.utils.model_config import MODEL
-load_dotenv()
+load_dotenv(override=True)
 
 client = OpenAI(
     api_key=os.environ["OPENAI_API_KEY"]
